@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEC PRIME - Gestão Executiva & Eventos</title>
+    
+    <!-- Importação das Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Variáveis de Cores Baseadas no Brandboard */
+        :root {
+            --core-navy: #001F3F;
+            --champagne-gold: #E3C57C;
+            --regal-bronze: #94713A;
+            --antique-ivory: #FEF9E7;
+            --soft-alabaster: #FDFBF6;
+            --white: #FFFFFF;
+        }
+
+        /* Reset e Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--soft-alabaster);
+            color: var(--core-navy);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-gold {
+            background-color: var(--champagne-gold);
+            color: var(--core-navy);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--regal-bronze);
+            color: var(--white);
+        }
+
+        .btn-dark {
+            background-color: var(--core-navy);
+            color: var(--champagne-gold);
+            border: 1px solid var(--champagne-gold);
+        }
+
+        /* Cabeçalho (Header) */
+        header {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--champagne-gold);
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--core-navy);
+            margin-bottom: -5px;
+        }
+
+        .logo-text p {
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            color: var(--regal-bronze);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--regal-bronze);
+        }
+
+        /* Seção Hero */
+        .hero {
+            background-color: var(--core-navy);
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(227, 197, 124, 0.1));
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--antique-ivory);
+            font-weight: 300;
+        }
+
+        .hero-image {
+            flex: 1;
+            height: 400px;
+            background-color: #00152a; /* Placeholder escuro */
+            border-radius: 8px 8px 8px 100px; /* Detalhe curvo inspirado na elegância da marca */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--champagne-gold);
+            z-index: 2;
+            margin-left: 40px;
+            border: 1px solid rgba(227, 197, 124, 0.2);
+        }
+
+        /* Seção de Features/Serviços (Baseado no esboço) */
+        .features {
+            background-color: var(--white);
+            padding: 60px 0;
+            margin-top: -30px; /* Sobrepõe levemente o hero */
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--champagne-gold);
+            margin-bottom: 15px;
+        }
+
+        .feature-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--core-navy);
+        }
+
+        .feature-item p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Seção Manifesto */
+        .manifesto {
+            padding: 80px 0;
+            background-color: var(--soft-alabaster);
+            text-align: center;
+        }
+
+        .manifesto-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 50px;
+            border-top: 4px solid var(--champagne-gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .manifesto-box h2 {
+            font-size: 2rem;
+            color: var(--core-navy);
+            margin-bottom: 25px;
+        }
+
+        .manifesto-box p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: var(--core-navy);
+        }
+
+        .manifesto-box .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--regal-bronze);
+            margin-top: 30px;
+        }
+
+        /* Rodapé de Destaque */
+        .footer-banner {
+            background-color: var(--core-navy);
+            color: var(--champagne-gold);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-banner .logo-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-banner h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Banner Final Inferior */
+        .bottom-bar {
+            background-color: rgba(0, 31, 63, 0.95);
+            padding: 20px 0;
+            border-top: 1px solid rgba(227, 197, 124, 0.2);
+        }
+
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .bottom-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .bottom-item i {
+            color: var(--champagne-gold);
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            .hero-image {
+                margin-left: 0;
+                margin-top: 40px;
+                width: 100%;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Em um projeto real, adicionar menu hambúrguer aqui */
+            }
+            .features-grid, .bottom-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">SP</div>
+                <div class="logo-text">
+                    <h1>SEC PRIME</h1>
+                    <p>GESTÃO EXECUTIVA & EVENTOS</p>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+
+            <button class="btn btn-dark">Fale Conosco</button>
+        </div>
+    </header>
+
+    <!-- Seção Hero Principal -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Gestão executiva<br>que gera tempo,<br>organização e resultados.</h1>
+                <p>Soluções em assessoria executiva, organização corporativa e gestão de eventos com excelência.</p>
+                <button class="btn btn-gold">Fale com um especialista</button>
+            </div>
+            <div class="hero-image">
+                <!-- Substituir por tag <img> e Remover texto abaixo em produção -->
+                <span>[ Área para Inserir Foto da Profissional ]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Aplicações Iniciais (Baseado na barra branca do mockup) -->
+    <section class="container">
+        <div class="features">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fa-regular fa-id-badge"></i>
+                    <h3>Assessoria Executiva<br>Remota</h3>
+                    <p>Organização de agendas, reuniões, viagens e demandas.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-sitemap"></i>
+                    <h3>Organização<br>Corporativa</h3>
+                    <p>Processos organizados para mais eficiência no dia a dia.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <h3>Gestão de<br>Eventos</h3>
+                    <p>Planejamento, coordenação e execução completa.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <h3>Relatórios & Atas</h3>
+                    <p>Elaboração de documentos com clareza e precisão.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto da Marca -->
+    <section class="manifesto">
+        <div class="container">
+            <div class="manifesto-box">
+                <h2>Manifesto</h2>
+                <p>Acreditamos que grandes resultados não acontecem por acaso. Eles nascem do planejamento, da organização e da atenção aos detalhes.</p>
+                <p>Trabalhamos nos bastidores para que executivos, empresas e eventos alcancem seu máximo potencial.</p>
+                <p>Nossa missão é transformar rotinas complexas em processos organizados, permitindo que nossos clientes foquem no que realmente importa.</p>
+                <p>Somos profissionais de Secretariado Executivo que entendem que excelência não está apenas no resultado, mas em todo o caminho percorrido até ele.</p>
+                <p class="signature">Somos a SEC PRIME.<br><span style="font-size: 1.2rem; color: var(--champagne-gold);">Excelência em cada detalhe.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé de Destaque -->
+    <footer class="footer-banner">
+        <div class="container">
+            <div class="logo-icon">SP</div>
+            <h2 class="serif-font">Excelência em cada detalhe.</h2>
+        </div>
+    </footer>
+
+    <!-- Faixa Inferior de Valores -->
+    <div class="bottom-bar">
+        <div class="container bottom-grid">
+            <div class="bottom-item">
+                <i class="fa-solid fa-folder-tree"></i>
+                <span>ORGANIZAÇÃO<br>que gera eficiência</span>
+            </div>
+            <div class="bottom-item">
+                <i class="fa-solid fa-chess-knight"></i>
+                <span>ESTRATÉGIA<br>que gera clareza</span>
+            </div>
+            <div class="bottom-item">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>GESTÃO<br>que gera resultados</span>
+            </div>
+            <div class="bottom-item">
+                <i class="fa-solid fa-award"></i>
+                <span>EXCELÊNCIA<br>em cada detalhe</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
