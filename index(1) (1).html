@@ -87,9 +87,55 @@ Nossa missão é proporcionar eficiência, organização e resultados para empre
 <div class="card">Foco em Resultados</div>
 </div>
 </section>
-
+```html
 <section id="equipe">
-<h2>Equipe Fundadora SEC PRIME</h2>
+    <h2>Equipe Fundadora SEC PRIME</h2>
+
+    <div class="fundadores-container">
+        <img src="cofundadores.png"
+             alt="Equipe Fundadora SEC PRIME"
+             class="fundadores-img">
+    </div>
+</section>
+
+<style>
+#equipe{
+    padding:70px 20px;
+    text-align:center;
+    background:#FDFBF6;
+}
+
+#equipe h2{
+    color:#001F3F;
+    margin-bottom:30px;
+    font-size:2rem;
+}
+
+.fundadores-container{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.fundadores-img{
+    width:100%;
+    max-width:1100px;
+    height:auto;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    transition:transform .3s ease;
+}
+
+.fundadores-img:hover{
+    transform:scale(1.01);
+}
+
+@media (max-width:768px){
+    .fundadores-img{
+        border-radius:8px;
+    }
+}
+</style>
+```
 <div class="team">
 <p><strong>Leonardo dos Santos Barbosa</strong></p>
 <p><strong>Dáfyne Larissa Souza de Santana</strong></p>
